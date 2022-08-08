@@ -3,32 +3,32 @@ package Gold;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
-public class Q1655_ÃÖ´ëÃÖ¼ÒÈü {
+public class Q1655_ìµœëŒ€ìµœì†Œí™ {
 	public static void main(String[] args) {
-		 Scanner sc = new Scanner(System.in);
-		 StringBuilder sb = new StringBuilder();
+		Scanner sc = new Scanner(System.in);
+		StringBuilder sb = new StringBuilder();
 		 
-		 // ÃÖ¼ÒÈü(¿Ã¶ó°¥¼ö·Ï °ªÀÌ ÀÛ¾ÆÁö´Â ±¸Á¶)°ú ÃÖ´ëÈü(¿Ã¶ó°¥¼ö·Ï °ªÀÌ Ä¿Áö´Â ±¸Á¶) ÀÌ¿ë
-		 // °¡¿îµ¥¿¡ ÀÖ´Â ¼ıÀÚ´Â ÃÖ´ëÈüÀÇ root°ª
-	     PriorityQueue<Integer> min = new PriorityQueue<>();
-	     PriorityQueue<Integer> max = new PriorityQueue<>((o1,o2) -> o2-o1);     
+		 // ìµœì†Œí™(ì˜¬ë¼ê°ˆìˆ˜ë¡ ê°’ì´ ì‘ì•„ì§€ëŠ” êµ¬ì¡°)ê³¼ ìµœëŒ€í™(ì˜¬ë¼ê°ˆìˆ˜ë¡ ê°’ì´ ì»¤ì§€ëŠ” êµ¬ì¡°) ì´ìš©
+		 // ê°€ìš´ë°ì— ìˆëŠ” ìˆ«ìëŠ” ìµœëŒ€í™ì˜ rootê°’
+	     	PriorityQueue<Integer> min = new PriorityQueue<>();
+	     	PriorityQueue<Integer> max = new PriorityQueue<>((o1,o2) -> o2-o1);     
 	 
-	     int N=sc.nextInt();
+	     	int N=sc.nextInt();
 	     
-	     while(N-->0) {
-	    	 int num=sc.nextInt();
+	     	while(N-->0) {
+	    		int num=sc.nextInt();
 	    	 
-	    	 // maxºÎÅÍ Ãß°¡
+	    	 // maxë¶€í„° ì¶”ê°€
 	    	 if(min.size()==max.size()) max.add(num);
 	    	 else min.add(num);
 
-	    	 if(!min.isEmpty() && !max.isEmpty() && max.peek() > min.peek()) { // maxÀÇ peekÀÌ ´õ Å©¸é swap
+	    	 if(!min.isEmpty() && !max.isEmpty() && max.peek() > min.peek()) { // maxì˜ peekì´ ë” í¬ë©´ swap
 	                int tmp=min.poll();
 	                min.add(max.poll());
 	                max.add(tmp);
 	            }
 	            sb.append(max.peek()+"\n");        
-	    }
+	    	}
 
 	     System.out.println(sb);
 	    }
