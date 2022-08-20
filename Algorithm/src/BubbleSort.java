@@ -1,4 +1,4 @@
-package Algorithm_Study;
+
 import java.util.Random;
 
 public class BubbleSort {

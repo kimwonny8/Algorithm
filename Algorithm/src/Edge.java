@@ -1,4 +1,4 @@
-package Algorithm_Study;
+
 
 public class Edge<V, E> {
     protected boolean directed;    // 방향 여부

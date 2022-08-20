@@ -1,4 +1,4 @@
-package Algorithm_Study;
+
 
 class HanoiTowerMove {
 	void Move(int num, char start, char mid, char end) {
