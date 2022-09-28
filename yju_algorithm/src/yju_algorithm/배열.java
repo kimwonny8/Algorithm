@@ -17,7 +17,7 @@ public class 배열 {
 		System.out.println("\n가장 큰 수: "+maxOf(arr));
 		System.out.println("\n요소 순서를 역순으로 출력");
 		reverse(arr);
-		System.out.println("합계: "+sumOf(arr));
+		System.out.println("합계: "+sumOf(arr)+"\n");
 		
 		int []arr2=new int[arr.length];
 		copy(arr, arr2);
@@ -40,7 +40,7 @@ public class 배열 {
 			System.out.println(Arrays.toString(arr));
 			swap(arr, i, j);
 		}
-		System.out.println("정렬 완료: "+Arrays.toString(arr));
+		System.out.println("정렬 완료: "+Arrays.toString(arr)+"\n");
 	}
 	
 	public static void swap(int []arr, int i, int j) {
@@ -66,12 +66,8 @@ public class 배열 {
 	}
 	
 	public static void rcopy(int []arr, int []arr2) {
-		for(int i=0; i<arr.length/2; i++) {
-			int j=arr.length-i-1; // 바꿔야 할 요소
-			swap(arr, i, j);
-			arr2[i]=arr[i];
-		}
-		System.out.println("arr: "+Arrays.toString(arr));
+		copy(arr, arr2);
+		reverse(arr2);
 		System.out.println("arr2: "+Arrays.toString(arr2));
 	}
 
