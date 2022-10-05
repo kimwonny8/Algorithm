@@ -11,7 +11,7 @@ public class 배열 {
 		int n=7;
 		int []arr=new int[n];
 		for(int i=0; i<n; i++) {
-			arr[i]=rand.nextInt(100); // 0~100 사이 
+			arr[i]=rand.nextInt(100); // 0~99
 		}
 		System.out.print(Arrays.toString(arr));
 		System.out.println("\n가장 큰 수: "+maxOf(arr));
