@@ -43,7 +43,7 @@ public class 배열 {
 		System.out.println("정렬 완료: "+Arrays.toString(arr)+"\n");
 	}
 	
-	public static void swap(int []arr, int i, int j) {
+	static void swap(int []arr, int i, int j) {
 		int tmp=arr[i];
 		arr[i]=arr[j];
 		arr[j]=tmp;

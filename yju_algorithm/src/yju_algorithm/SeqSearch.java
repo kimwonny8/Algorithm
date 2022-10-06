@@ -3,6 +3,7 @@ package yju_algorithm;
 import java.util.Random;
 import java.util.Scanner;
 
+// 선형 검색
 public class SeqSearch {
     // 100개의 랜덤 정수값(0~100)을 가진 배열을 생성하고
     // 5가 들어있는 배열의 인덱스를 검색, 못 찾으면 못찾았다고 출력
