@@ -97,7 +97,7 @@ public class Wdb {
             System.out.print("값이 " + idx + "번째 있어요");
         }
 
-        
+
         System.out.println("\n 버블 정렬");
         Search.bubbleSort(array, num);
         for (i = 0; i < num; i++) {
