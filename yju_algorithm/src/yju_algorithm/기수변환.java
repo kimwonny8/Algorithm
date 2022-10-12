@@ -3,49 +3,71 @@ package yju_algorithm;
 import java.util.Scanner;
 
 public class 기수변환 {
-	public static void main(String[] args) {
-		Scanner sc=new Scanner(System.in);
-		int num;
-		int cd; // 기수
-		int dno; // 변환 뒤 자릿수
-		
-		char[] arr=new char[32]; // 변환 후 각 자리의 숫자를 넣어두는 문자배열
-		
-		do {
-		System.out.print("변환할 숫자 입력(음이 아닌 정수): ");
-		num=sc.nextInt(); 
-		} while(num<0);
-		
-		System.out.print("2진수: ");
-		dno=cardConv(num, 2, arr);
-		for(int i=0; i<dno; i++) System.out.print(arr[i]);
-		
-		System.out.print("\n8진수: ");
-		dno=cardConv(num, 8, arr);
-		for(int i=0; i<dno; i++) System.out.print(arr[i]);
-		
-		System.out.print("\n16진수: ");
-		dno=cardConv(num, 16, arr);
-		for(int i=0; i<dno; i++) System.out.print(arr[i]);
-		
-	}
-	
-	static int cardConv(int n, int r, char[]arr) {
-		// 정수 n, r진수로 변환
-		int digits=0;
+	// --- 정숫값 x를 r진수로 변환하여 배열 d에 아랫자리부터 넣어 두고 자릿수를 반환 ---//
+	static int cardConv(int x, int r, char[] d) {
+		int digits = 0; // 변환 뒤 자릿수
 		String dchar = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		
+
 		do {
-			arr[digits++]=dchar.charAt(n%r);
-			n/=r;
-		} while(n!=0);
-		
-		// 역순으로
-		for(int i=0; i<digits/2; i++) {
-			char tmp=arr[i];
-			arr[i]=arr[digits-i-1];
-			arr[digits-i-1]=tmp;
+			d[digits++] = dchar.charAt(x % r); // r로 나눈 나머지를 저장
+			x /= r;
+		} while (x != 0);
+		for (int i = 0; i < digits / 2; i++) { // 배열 d의 숫자 문자열을 역순 정렬
+			char t = d[i];
+			d[i] = d[digits - i - 1];
+			d[digits - i - 1] = t;
 		}
 		return digits;
 	}
+
+	public static void main(String[] args) {
+		Scanner stdIn = new Scanner(System.in);
+		int no; // 변환할 정수
+		int cd; // 기수
+		int dno; // 변환 뒤 자릿수
+		int retry; // 다시 한 번?
+		char[] cno = new char[32]; // 변환 후 각 자리의 숫자를 넣어 두는 문자 배열
+
+		System.out.println("10진수를 기수 변환합니다.");
+
+		do {
+			System.out.print("변환하는 음이 아닌 정수: ");
+			no = stdIn.nextInt();
+		} while (no < 0);
+
+//		do {
+//			System.out.print("어떤 진수로 변환할까요?(2-36): ");
+//			cd = stdIn.nextInt();
+//		} while (cd < 2 || cd > 36);
+
+		cd  = 2;
+		dno = cardConv(no, cd, cno); // no를 cd 진수로 변환
+
+		System.out.print(cd + "진수로 ");
+		for (int i = 0; i < dno; i++) // 순서대로 표시
+			System.out.print(cno[i]);
+		System.out.println("입니다.");
+		
+		cd  = 8;
+		dno = cardConv(no, cd, cno); // no를 cd 진수로 변환
+
+		System.out.print(cd + "진수로 ");
+		for (int i = 0; i < dno; i++) // 순서대로 표시
+			System.out.print(cno[i]);
+		System.out.println("입니다.");
+
+		
+		cd  = 16;
+		dno = cardConv(no, cd, cno); // no를 cd 진수로 변환
+
+		System.out.print(cd + "진수로 ");
+		for (int i = 0; i < dno; i++) // 순서대로 표시
+			System.out.print(cno[i]);
+		System.out.println("입니다.");
+
+	}
+	
+	
+	
+
 }
