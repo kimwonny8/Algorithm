@@ -2,7 +2,7 @@ package yju_algorithm;
 
 import java.util.Random;
 
-class Search {
+class Search0 {
     // 버블 정렬
     static void bubbleSort(int[] a, int n) {
         for (int i = 0; i < n - 1; i++) {
@@ -90,7 +90,7 @@ public class Wdb {
             }
         }
         System.out.println();
-        int idx = Search.seqSearch(array, num, 5);
+        int idx = Search0.seqSearch(array, num, 5);
         if (idx < 0) {
             System.out.print("값이 없어요");
         } else {
@@ -99,7 +99,7 @@ public class Wdb {
 
 
         System.out.println("\n 버블 정렬");
-        Search.bubbleSort(array, num);
+        Search0.bubbleSort(array, num);
         for (i = 0; i < num; i++) {
             System.out.print("a[" + i + "]=" + array[i]);
             if ((i + 1) % 10 == 0) {
@@ -110,7 +110,7 @@ public class Wdb {
 
         }
         System.out.println("\n 이진 검색");
-        idx = Search.binarySearch(array, num, 5);
+        idx = Search0.binarySearch(array, num, 5);
         if (idx < 0) {
             System.out.print("값이 없어요");
         } else {
