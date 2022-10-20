@@ -5,9 +5,7 @@ import yju_algorithm.IntStack.EmptyIntStackException;
 
 
 class IntStack {
-	public IntStack() {
-
-	}
+	public IntStack() {}
 
 	private int[] stk; // 스택용 배열
 	private int capacity; // 스택의 크기
@@ -15,14 +13,12 @@ class IntStack {
 
 	// --- 실행시 예외: 스택이 비어있음 ---//
 	public class EmptyIntStackException extends RuntimeException {
-		public EmptyIntStackException() {
-		}
+		public EmptyIntStackException() {}
 	}
 
 	// --- 실행시 예외: 스택이 가득 참 ---//
 	public class OverflowIntStackException extends RuntimeException {
-		public OverflowIntStackException() {
-		}
+		public OverflowIntStackException() {}
 	}
 
 	// --- 생성자(constructor) ---//

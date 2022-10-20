@@ -38,6 +38,7 @@ public class 선형검색 {
 				System.out.print(",");
 			}
 		}
+		
 		System.out.println();
 		int idx = Search2.seqSearch(array, num, 5);
 		if (idx < 0) {
