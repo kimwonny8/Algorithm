@@ -55,6 +55,18 @@ class IntArrayQueue {
 		return x;
 	}
 
+	// --- 큐에서 x를 검색하여 인덱스(발견하지 못하면 -1)를 반환합니다---//
+	public int indexOf(int x) {
+		for (int i = 0; i < num; i++)
+			if (que[i] == x) // 검색 성공
+				return i;
+		return -1; // 검색 실패
+	}
+
+	public void clear() {
+		num = 0;
+	}
+
 	public int capacity() {
 		return capacity;
 	}
@@ -76,7 +88,7 @@ class IntArrayQueue {
 	}
 
 	public void print2(int x) {
-		System.out.printf("%d 디큐 front=%d, rear=%d, num=%d\n",x, front, rear, num);
+		System.out.printf("%d 디큐 front=%d, rear=%d, num=%d\n", x, front, rear, num);
 	}
 }
 
@@ -85,10 +97,10 @@ public class 큐 {
 		int QUEUE_SIZE = 20;
 		int ENQUE_CNT = 100;
 		int RANDOM_NUM = 100;
-		
+
 		IntArrayQueue q = new IntArrayQueue(QUEUE_SIZE);
 		Random rand = new Random();
-		int cnt=1;
+		int cnt = 1;
 		for (int i = 0; i < ENQUE_CNT; i++) {
 			int tmp = rand.nextInt(RANDOM_NUM);
 			if (!q.isFull()) {
@@ -97,12 +109,12 @@ public class 큐 {
 			} else {
 				i--; // 이건 횟수에 포함되면 안되므로 빼줘야 함
 				System.out.println("full 발생");
-				while(q.size()!=0) {
+				while (q.size() != 0) {
 					q.print2(q.deque());
 				}
 				System.out.println("Empty 발생");
 			}
-			
+
 		}
 	}
 }
