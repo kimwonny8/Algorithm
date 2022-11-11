@@ -92,15 +92,36 @@ class BubbleSort {
 		print(arr);
 	}
 
-	
+	// 단순 삽입 정렬 - 두번째부터, 그 값이 앞보다 작으면 앞을 뒤로 밀고 작은 수를 앞으로
+	static void insertionSort(int []arr) {
+		int n=arr.length;
+		for(int i=1; i<n; i++) {
+			int tmp=arr[i];
+			int idx=0; // 들어갈 자리 찾기
+
+			for(int j=0; j<i; j++) {
+				if(arr[j] < tmp) continue;
+				else break;
+			}
+			
+			// 들어갈 위치 뒤에꺼 한 칸씩 밀기
+			for(int j=i; j>idx; j--) {
+				arr[j]=arr[j-1];
+			}
+			print(arr);
+			System.out.println();
+		}
+		
+	}
 }
 
 public class 정렬 {
 	public static void main(String[] args) {
 		int[] arr = { 7, 6, 4, 3, 1, 9, 8 };
-		int[] arr2 = { 1, 2, 6, 5, 9, 8 };
+		int[] arr2 = { 6,4,1,7,3,9,8 };
 		// BubbleSort.bubbleSort2(arr);
 		//BubbleSort.bubbleSort3(arr2);
-		BubbleSort.selectionSort(arr);
+		//BubbleSort.selectionSort(arr);
+		BubbleSort.insertionSort(arr2);
 	}
 }
