@@ -210,6 +210,26 @@ class Sorts {
 		if(left < pr) quickSort(arr, left, pr);
 		if(pl < right) quickSort(arr, pl, right);
 	}
+	
+	// 병합 정렬 - 정렬을 마친 배열 a,b를 병합하여 arr 에 저장
+	static void mergeSort(int []a, int[] b, int[] arr) {
+		int na=a.length;
+		int nb=b.length;
+		
+		int pointA=0, pointB=0, pointC=0;
+		
+		while(pointA < na && pointB < nb) { // 작은 쪽을 arr에 넣어 둠
+			arr[pointC++] = (arr[pointA] <= b[pointB]) ? a[pointA++] : b[pointB++]; 
+		}
+		
+		while(pointA < na) {
+			arr[pointC++] = a[pointA++];
+		}
+		
+		while(pointB < nb) {
+			arr[pointC++] = b[pointB++];
+		}
+	}
 }
 
 public class 정렬 {
