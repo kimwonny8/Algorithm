@@ -1,6 +1,7 @@
 package yju_algorithm;
 
 import java.util.Comparator;
+import java.util.Scanner;
 
 class Node<E> {
 	E data;
@@ -12,6 +13,53 @@ class Node<E> {
 	}
 
 }
+class Student {	
+	int hakbun;
+	String name;
+	String mobile;
+	
+	public Student() {
+		
+	}
+	
+	public Student(int hakbun, String name, String mobile) {
+		super();
+		this.hakbun = hakbun;
+		this.name = name;
+		this.mobile = mobile;
+	}
+	
+	public String toString() {
+		return hakbun+" "+name+" "+mobile;
+	}
+	
+	public static  final Comparator<Student> NO_ORDER = new NoOderComparator();
+	
+	private static class NoOderComparator implements Comparator<Student> {
+		public int compare(Student o1, Student o2) {
+			return (o1.hakbun > o2.hakbun) ? 1: (o1.hakbun < o2.hakbun) ? -1 : 0 ;
+		}
+
+	}
+	
+	public static  final Comparator<Student> NAME_ORDER = new NameOderComparator();
+		
+		private static class NameOderComparator implements Comparator<Student> {
+			public int compare(Student o1, Student o2) {
+				return o1.name.compareTo(o2.name);
+			}
+	
+	}
+		
+	public static  final Comparator<Student> MOBILE_ORDER = new MobileOderComparator();
+			
+			private static class MobileOderComparator implements Comparator<Student> {
+				public int compare(Student o1, Student o2) {
+					return o1.mobile.compareTo(o2.mobile);
+			}
+		
+	}
+}
 
 class LinkedList<E> {
 	Node<E> head; // 머리 포인터
@@ -20,25 +68,19 @@ class LinkedList<E> {
 	public LinkedList() {
 		head = current = null;
 	}
-
-	// head에 노드를 삽입하는 메서드
+	
 	public void addFirst(E obj) {
-		// 데이터를 활용해 노드 객체를 생성
-		Node<E> ptrNew = new Node<E>(obj, null);
-
-		// 노드 객체의 다음 노드 객체의 위치를 현재 head값으로 설정한다.
-		ptrNew.next = head;
-		// 새로운 노르를 head로 설정한다.
-		head = ptrNew;
+		Node<E> resultNew = new Node<E>(obj, null);
+		resultNew.next = head;
+		head = resultNew;
+		
 	}
 
 	// 전체 노드를 표시
 	public void dump() {
 		current = head;
 		while (current != null) {
-//			System.out.println("현재 객체: "+current);
-//			System.out.println("다음 객체: "+current.next);
-			System.out.println("현재 데이터: " + current.data);
+			System.out.println(current.data);
 			current = current.next;
 		}
 	}
@@ -62,11 +104,11 @@ class LinkedList<E> {
 		if(head == null) {
 			addFirst(obj);
 		} else {
-			Node<E> ptr = head;
-			while(ptr.next != null) {
-				ptr = ptr.next;
+			Node<E> result = head;
+			while(result.next != null) {
+				result = result.next;
 			}
-			ptr.next = new Node<E>(obj, null);
+			result.next = new Node<E>(obj, null);
 			current = new Node<E>(obj, null);
 		}
 	}
@@ -86,12 +128,12 @@ class LinkedList<E> {
 				removeFirst(); 
 			}
 			else {
-				Node<E> ptr = head; // 스캔 중인 노드
+				Node<E> result = head; // 스캔 중인 노드
 				Node<E> pre = head; // 스캔 중인 노드의 앞쪽 노드
 				
-				while(ptr.next != null) {
-					pre = ptr;
-					ptr = ptr.next;
+				while(result.next != null) {
+					pre = result;
+					result = result.next;
 				}
 				pre.next = null; // pre 는 삭제 뒤의 꼬리노드
 				current = pre;
@@ -112,6 +154,36 @@ class StringComparator implements Comparator<String> {
 
 public class 리스트 {
 	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		Student result;
+		Student tmp = new Student();
+		LinkedList<Student> list = new LinkedList<>();
+		
+		list.addFirst(new Student(3,"김땡땡","010-0000-0000"));
+		list.addFirst(new Student(2,"김정원","010-1111-1111"));
+		list.addFirst(new Student(1,"홍길동","010-2222-2222"));
+		list.dump();
+		
+		System.out.print("찾을 번호: ");
+		tmp.hakbun=sc.nextInt();
+		result=list.search(tmp, Student.NO_ORDER);
+		if(result==null) System.out.println("그 학번의 데이터가 없습니다");
+		else System.out.println("학번 검색 성공: "+result);
+		
+		System.out.print("찾을 이름: ");
+		tmp.name=sc.next();
+		result=list.search(tmp, Student.NAME_ORDER);
+		if(result==null) System.out.println("그 이름의 데이터가 없습니다");
+		else System.out.println("이름 검색 성공: "+result);
+		
+		System.out.print("찾을 번호: ");
+		tmp.mobile=sc.next();
+		result=list.search(tmp, Student.MOBILE_ORDER);
+		if(result==null) System.out.println("그 번호의 데이터가 없습니다");
+		else System.out.println("번호 검색 성공: "+result);
+		
+		
+		/*
 		LinkedList<String> linkedList = new LinkedList<>();
 
 		linkedList.addFirst("a");
@@ -134,6 +206,7 @@ public class 리스트 {
 		System.out.println("removeLast: ");
 		linkedList.removeLast();
 		linkedList.dump();
+		*/
 	}
 
 }
