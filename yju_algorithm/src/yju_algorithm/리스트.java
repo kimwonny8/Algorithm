@@ -3,11 +3,11 @@ package yju_algorithm;
 import java.util.Comparator;
 import java.util.Scanner;
 
-class Node<E> {
+class Node1<E> {
 	E data;
-	Node<E> next;
+	Node1<E> next;
 
-	public Node(E data, Node<E> next) {
+	public Node1(E data, Node1<E> next) {
 		this.data = data;
 		this.next = next;
 	}
@@ -62,15 +62,15 @@ class Student {
 }
 
 class LinkedList<E> {
-	Node<E> head; // 머리 포인터
-	Node<E> current; // 선택 포인터
+	Node1<E> head; // 머리 포인터
+	Node1<E> current; // 선택 포인터
 
 	public LinkedList() {
 		head = current = null;
 	}
 	
 	public void addFirst(E obj) {
-		Node<E> resultNew = new Node<E>(obj, null);
+		Node1<E> resultNew = new Node1<E>(obj, null);
 		resultNew.next = head;
 		head = resultNew;
 		
@@ -104,12 +104,12 @@ class LinkedList<E> {
 		if(head == null) {
 			addFirst(obj);
 		} else {
-			Node<E> result = head;
+			Node1<E> result = head;
 			while(result.next != null) {
 				result = result.next;
 			}
-			result.next = new Node<E>(obj, null);
-			current = new Node<E>(obj, null);
+			result.next = new Node1<E>(obj, null);
+			current = new Node1<E>(obj, null);
 		}
 	}
 	
@@ -128,8 +128,8 @@ class LinkedList<E> {
 				removeFirst(); 
 			}
 			else {
-				Node<E> result = head; // 스캔 중인 노드
-				Node<E> pre = head; // 스캔 중인 노드의 앞쪽 노드
+				Node1<E> result = head; // 스캔 중인 노드
+				Node1<E> pre = head; // 스캔 중인 노드의 앞쪽 노드
 				
 				while(result.next != null) {
 					pre = result;
