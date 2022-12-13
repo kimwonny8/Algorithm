@@ -140,6 +140,11 @@ class Sorts {
 			int tmp = arr[i];
 			int j;
 
+			for(j=i; j>0 && arr[j-1]>tmp; j--) {
+				arr[j]=arr[j-1];
+			}
+			System.out.println(tmp);
+			/*
 			for (j = 0; j < i; j++) {
 				if (arr[j] < tmp)
 					continue;
@@ -153,6 +158,7 @@ class Sorts {
 			for (int k = i; k >= j + 1; k--) {
 				arr[k] = arr[k - 1];
 			}
+			*/
 			arr[j] = tmp;
 		}
 
@@ -194,6 +200,7 @@ class Sorts {
 		}
 	}
 	
+	
 	// 퀵 정렬 => O(n log n), 최악일 경우 O(n2)
 	static void quickSort(int []arr, int left, int right) {
 		int pl = left; // 왼쪽 포인터
@@ -210,6 +217,7 @@ class Sorts {
 		if(left < pr) quickSort(arr, left, pr);
 		if(pl < right) quickSort(arr, pl, right);
 	}
+	
 	
 	// 병합 정렬 - 정렬을 마친 배열 a,b를 병합하여 arr 에 저장
 	static void mergeSort(int []a, int[] b, int[] arr) {
@@ -236,16 +244,17 @@ public class 정렬 {
 	public static void main(String[] args) {
 		int[] arr = { 7, 6, 4, 3, 1, 9, 8 };
 		int[] arr2 = { 6, 4, 8, 3, 1, 9, 7 };
+		int[] arr3 = { 2,3,4,1 };
 		// Sorts.Sorts2(arr);
 		// Sorts.Sorts3(arr2);
 		// Sorts.selectionSort(arr);
 		// Sorts.insertionSort(arr2);
-		// Sorts.insertionSort2(arr2);
+		Sorts.insertionSort2(arr3);
 		// Sorts.shellSort(arr);
 		// Sorts.shellSort2(arr);
 				
 		int [] x = {5,7,1,4,6,2,3,9,8};
 		Sorts.quickSort(x, 0, x.length-1);
-		Sorts.print(x);
+		//Sorts.print(x);
 	}
 }

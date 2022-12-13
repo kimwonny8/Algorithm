@@ -1,7 +1,5 @@
 package yju_algorithm;
 
-import java.util.Random;
-
 // 링버퍼를 이용한 큐를 사용하여 100보다 작은 정수 100개를 랜덤하게 생성하여 인큐하고, 
 // full 발생시 디큐 시작, empty 나면 인큐 진행
 
@@ -79,6 +77,15 @@ class IntArrayQueue {
 		return num <= 0;
 	}
 
+	// --- 큐에서 데이터를 피크(맨앞 데이터를 들여다봄 ) ---*/
+	public int peek() {
+		/*
+		 * if (num <= 0) throw new EmptyIntArrayQueueException(); // 큐가 비어 있음
+		 */	
+		return que[num - 1];
+	}
+
+	
 	public boolean isFull() {
 		return num >= capacity;
 	}
@@ -99,6 +106,7 @@ public class 큐 {
 		int RANDOM_NUM = 100;
 
 		IntArrayQueue q = new IntArrayQueue(QUEUE_SIZE);
+	/*
 		Random rand = new Random();
 		int cnt = 1;
 		for (int i = 0; i < ENQUE_CNT; i++) {
@@ -116,5 +124,14 @@ public class 큐 {
 			}
 
 		}
+		*/
+		q.enque(1);
+		q.enque(2);
+		q.enque(3);
+		q.enque(4);
+		q.enque(5);
+		System.out.println(q.deque());
+		System.out.println(q.peek());
+		
 	}
 }
